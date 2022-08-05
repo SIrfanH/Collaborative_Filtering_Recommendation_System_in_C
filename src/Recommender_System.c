@@ -116,11 +116,6 @@ void readCSV(Users *table[])
     fgets(bookNames, Size, file);   // first line is book names
     while(!feof(file) && fgets(line, Size, file)!=NULL)
     {
-        /*if(fgets(line, Size, file)==NULL){
-            break;
-        }; // get one line at a time from the text*/
-        //fgets(line, Size, file);
-        //printf("%s\n",line);
         int i=0;
         int bookIndex = 6;      // used for reading book names from bookNames string. book names start from 6. character
         int len = strlen(line);
@@ -379,7 +374,7 @@ void pred(Users *table[], int index, Similars *simls[])
         simls[i]->mean = simls[i]->mean / (Number_of_read_books);  // Average value    (Zero ratings are not included)
         i++;
     }
-    //printf("ort : %f\n",simls[0]->mean);
+
     i=0;
     int j=0;
 
@@ -399,7 +394,7 @@ void pred(Users *table[], int index, Similars *simls[])
         }
         i++;
     }
-    //printf("number of books: %d\n", j);
+
     rA = rA/(i-j);  // Average rating of new user, 0 ratings are no included
 
     j=0;
@@ -475,7 +470,6 @@ int main()
         table[i]=NULL;
     }
     readCSV(table);
-    //showTable(table);
     char name[20];
     int k;
     int choice;
